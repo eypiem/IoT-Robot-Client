@@ -10,14 +10,23 @@ This code is written in Python 3 and has been tested on a Raspberry Pi 3B+ runni
 
 ## Deployment
 
-Firstly, install [RPi.GPIO](https://pypi.org/project/RPi.GPIO/):
+Firstly, install [`RPi.GPIO`](https://pypi.org/project/RPi.GPIO/):
 
 ```bash
 sudo apt-get update
 sudo apt-get install rpi.gpio
 ```
 
-### In main.py:
+To start the client:
+
+```bash
+python3 app.py
+```
+You can define a `systemd` daemon to start the client everytime the Raspberry Pi boots up.
+
+## Configuration
+
+### In `main.py`:
 
 Set the IP address and port of the [server](https://github.com/AmirParsaMahdian/IoT-Robot-Server):
 ```python
@@ -25,13 +34,13 @@ TCP_IP = 'xxx.xxx.xxx.xxx'
 TCP_PORT = 7070
 ```
 
-Assign a name and unique id to the robot:
+Assign a name and unique ID to the robot:
 ```python
 NAME = 'Robot X'
 ID = '1as6df'
 ```
 
-Configure the pinouts as you require (note that M1_EN and M2_EN need to support PWM):
+Configure the pinouts as you require (note that `M1_EN` and `M2_EN` need to support PWM):
 ```python
 LED_PIN = 7
 BUZZER_PIN = 8
